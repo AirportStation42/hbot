@@ -33,7 +33,6 @@ MAIN_DIR=/usr/local/bin/hbot_package/hbotModules
         source $MAIN_DIR/firewalls/server_rulesets/firewall_server_pbs.sh
         source $MAIN_DIR/firewalls/server_rulesets/firewall_server_web.sh
         source $MAIN_DIR/firewalls/server_rulesets/firewall_server_wol.sh
-        source $MAIN_DIR/firewalls/server_rulesets/firewall_server_uptime.sh
 
 # general
     source $MAIN_DIR/general/general_updater.sh
@@ -96,8 +95,6 @@ while getopts "umdsf:iwav:xct:gp:" FLAG; do
                 firewall_support_allow_local_only
             elif [ "$OPTARG" == "wol" ]; then
                 firewall_server_wol
-            elif [ "$OPTARG" == "uptime" ]; then
-                firewall_server_uptime
             elif [ "$OPTARG" == "vm" ]; then
                 firewall_home_limited_no_local_vm
             else
