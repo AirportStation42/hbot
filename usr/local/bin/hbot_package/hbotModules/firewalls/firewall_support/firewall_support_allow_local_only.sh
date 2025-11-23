@@ -13,8 +13,6 @@ function firewall_support_allow_local_only
             iptables -A OUTPUT -d 172.16.0.0/12 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new to Private Class B"
         echo " - Class A"
             iptables -A OUTPUT -d 10.0.0.0/8 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new to Private Class A"
-        echo " - APIPA"
-            iptables -A OUTPUT -d 169.254.0.0/16 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new to APIPA" 
         echo " - Localhost"
             iptables -A OUTPUT -d 127.0.0.1 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new to Loopback"            
 
