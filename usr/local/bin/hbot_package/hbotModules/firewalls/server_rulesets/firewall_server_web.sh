@@ -11,8 +11,6 @@ function firewall_server_web
             iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new incoming http"
         echo " - https     (ACCEPT - IN)"
             iptables -A INPUT -p tcp --dport 443 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new incoming https"
-        #echo " - ntp      (OUT)"
-            #iptables -A OUTPUT -p udp --dport 123 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new outgoing ntp"
 
     # ACCEPT Data Out -> All Handled on a per-user basis
         echo -e "\nACCEPT services OUT (per-user basis)"

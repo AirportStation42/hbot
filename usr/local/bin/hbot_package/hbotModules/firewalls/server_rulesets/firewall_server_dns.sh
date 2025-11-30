@@ -1,14 +1,14 @@
 #!/bin/bash
 
-function firewall_server_pbs
+function firewall_server_dns
 {
     firewall_header
 
-    echo -e "\n\e[44mDeploying Proxmox Backup Server Firewall Rules\e[49m"
+    echo -e "\n\e[44mDeploying DNS Server Firewall Rules\e[49m"
 
     echo -e "\nALLOW services IN"
         echo " - pbs 8007  (IN)"
-            iptables -A INPUT -p tcp -s 10.0.30.10/32,10.0.30.20/32,10.0.40.0/24,10.0.90.0/24 --dport 8007 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new incoming pbs 8007 from pve,proxy,devices,vpn"
+            iptables -A INPUT -p udp --dport 53 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new incoming dns anywhere"
         echo " - ssh"
             iptables -A INPUT -p tcp -s 10.0.40.0/24,10.0.90.0/24 --dport 22 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "ACCEPT new incoming ssh from devices,vpn"
         echo " - icmp ping (IN)"

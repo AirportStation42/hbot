@@ -33,6 +33,7 @@ function support_usage
     echo -e "                   web      web server use"
     echo -e "                   pbs      backup server use"
     echo -e "                   wol      wake on lan server use"
+    echo -e "                   dns      dns server use"
     echo -e ""
     echo -e "                   reset    FLUSH ALL rules and ACCEPT by default !!DANGER!!"
     echo -e "                   vm       limited home use - Internet Only (HTTP, HTTPS, DNS) WITHOUT local access"

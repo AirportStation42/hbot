@@ -60,7 +60,7 @@ limited  limited home use - Internet Only (HTTP, HTTPS, DNS)
 web      web server use
 pbs      backup server use
 wol      wake on lan server use
-uptime   uptime server use
+dns      dns server use
 
 reset    FLUSH ALL rules and ACCEPT by default !!DANGER!!
 vm       limited home use - Internet Only (HTTP, HTTPS, DNS) WITHOUT local access

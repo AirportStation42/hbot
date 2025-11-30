@@ -4,5 +4,5 @@ Section: misc
 Priority: optional
 Architecture: all
 Depends:
-Maintainer: A
+Maintainer: Anny
 Description: My colletion of bash scripts combined into one script to help make my (and your) life that much easier
