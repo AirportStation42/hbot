@@ -28,8 +28,8 @@ function firewall_header
             iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP -m comment --comment "DROP outgoing NULL"
         echo " - INVALID    (DROP - IN)"
             iptables -A INPUT -m conntrack --ctstate INVALID -j DROP -m comment --comment "DROP anything marked INVALID"
-        echo " - NEW != SYN (DROP - IN)"
-            iptables -A INPUT -p tcp ! --syn -m conntrack --ctstate NEW -j DROP -m comment --comment "DROP any NEW tcp connections that do NOT start with SYN"
+        #echo " - NEW != SYN (DROP - IN)"
+        #    iptables -A INPUT -p tcp ! --syn -m conntrack --ctstate NEW -j DROP -m comment --comment "DROP any NEW tcp connections that do NOT start with SYN"
         echo " - SYN Flood  (DROP - IN)"
             iptables -A INPUT -p tcp --syn -m hashlimit --hashlimit-name synFlood --hashlimit-above 30/s -j DROP -m comment --comment "LIMIT SYN to 30/sec"
         echo " - UPnP       (DROP - IN)" 
@@ -57,6 +57,6 @@ function firewall_header
         iptables -A OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT -m comment --comment "ACCEPT outgoing RELATED/ESTABLISHED"
 
     echo "ACCEPT everything on loopback"
-        iptables -A INPUT -i lo -s 127.0.0.0/8 -d 127.0.0.0/8 -j ACCEPT -m comment --comment "ACCEPT all incoming on loopback"
-        iptables -A OUTPUT -o lo -s 127.0.0.0/8 -d 127.0.0.0/8 -j ACCEPT -m comment --comment "ACCEPT all outgoing on loopback"
+        iptables -A INPUT -i lo -s 127.0.0.0/8 -j ACCEPT -m comment --comment "ACCEPT all incoming on loopback"
+        iptables -A OUTPUT -o lo -d 127.0.0.0/8 -j ACCEPT -m comment --comment "ACCEPT all outgoing on loopback"
 }
